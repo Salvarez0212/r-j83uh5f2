@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <textarea rows="3"></textarea>
-        <div className="counter">0</div>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [characters, setCharacters] = useState(0);
+
+  const handleCharacters = (event) => {
+    const value = event.target.value;
+    const count = value.split("");
+    setCharacters(count.length);
+  };
+  return (
+    <div className="container">
+      <textarea rows="3" onChange={handleCharacters}></textarea>
+      <div className="counter">{characters}</div>
+    </div>
+  );
+};
 
 export default App;
